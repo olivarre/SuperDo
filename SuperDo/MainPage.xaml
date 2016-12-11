@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SuperDo"
+             x:Class="SuperDo.MainPage">
+
+	  <StackLayout Orientation="Vertical" BackgroundColor="Green">
+        
+        <!-- Folder / Menu Button -->
+        <StackLayout Orientation="Horizontal" BackgroundColor="Blue">
+            <Label  Text="{x:Static local:App.Folder}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" TextColor="White"></Label>
+            <Button Text="#" HorizontalOptions="End" TextColor="White"></Button>
+        </StackLayout>
+
+        <!-- Main Edit Field -->
+        <Editor HeightRequest="80" HorizontalOptions="FillAndExpand" Text="Enter new ToDo text here" 
+                TextChanged="EditorTextChanged" Completed="EditorCompleted">
+        </Editor>
+
+        <!-- Scroll View of Items-->
+        <ScrollView HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ListView ItemsSource="{x:Static local:App.ToDo}" />
+            <ScrollView.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+            </ScrollView.GestureRecognizers>
+        </ScrollView>
+
+    </StackLayout>
+
+</ContentPage>
